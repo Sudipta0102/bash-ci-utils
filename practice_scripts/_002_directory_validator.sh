@@ -12,21 +12,27 @@ DIR="$1"
 
 # valid path check
 if [ ! -e "$DIR" ]; then
-	printf '%s : Not a valid path \n' "$DIR" >&2
+	printf "Error: path does not exist: %s \n" "$DIR" >&2
 	exit 2
 fi
 
 # directory check
 if [ ! -d "$DIR" ]; then
-	printf '%s : Not a valid directory \n' "$DIR" >&2
+	printf "Error : Not a valid directory: %s \n" "$DIR" >&2
 	exit 3
 fi
 
 # readable check
 if [ ! -r "$DIR" ]; then
-	printf '%s : Not readable \n' "$DIR" >&2
+	printf "Error : Directory not readable: %s \n" "$DIR" >&2
 	exit 4
 fi	
+
+# realpath is installed or not
+if ! command -v realpath >dev/null 2>&1; then
+	printf "Error: 'realpath' command not available \n" >&2
+  	exit 5
+fi
 
 realpath "$DIR"
 
