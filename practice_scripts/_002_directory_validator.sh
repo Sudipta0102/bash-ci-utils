@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Directory validator
+# Input: path
+# Verify it exists, is a directory, and is readable
+# Print absolute path
+# Exit codes must distinguish: missing vs not-a-dir vs permission denied
+
 set -euo pipefail
 
 # verifying arg number is 1
