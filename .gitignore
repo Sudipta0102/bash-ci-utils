@@ -21,3 +21,5 @@ docker-compose.override.yml
 # Secrets / local config
 .env
 .env.*
+
+/practice_scripts/fileList.txt
